@@ -61,5 +61,10 @@ class BookRepository extends ServiceEntityRepository
         $this->getEntityManager()->persist($book);
         $this->getEntityManager()->flush();
     }
+
+    public function getAllBooks()
+    {
+        return $this->findAll();
+    }
     
 }

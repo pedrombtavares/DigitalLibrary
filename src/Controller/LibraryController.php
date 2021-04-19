@@ -68,13 +68,13 @@ class LibraryController extends AbstractController
     }
 
     /**
-     * @param BookRepository $bookRepository
      * @Route("/books", methods={"GET"}, name="list_books")
      */
-    public function list(BookRepository $bookRepository): Response
+    public function listAllBooks()
     {
-        $books = $bookRepository->findAll();
-        
-        return $this->json($books);
+
+        return $this->render('library/list_books.html.twig', [
+            'books' =>  $this->bookRepository->findAll()
+        ]);
     }
 }
