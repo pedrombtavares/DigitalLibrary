@@ -46,16 +46,6 @@ class BookRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findOneByISBN($value): ?Book
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.isbn = :isbn')
-            ->setParameter('isbn', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-
     public function add(Book $book): void
     {
         $this->getEntityManager()->persist($book);
