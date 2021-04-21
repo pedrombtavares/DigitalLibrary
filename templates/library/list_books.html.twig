@@ -11,11 +11,25 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Books</h1>
         </div>
+        <hr>
+            
+        <div>
+            {{form_start(form)}}
+            {{form_widget(form.name)}}
+            {{form_widget(form.submit)}}
+            {{form_end(form)}}
+            <br>
+            <br>
+        </div>
+        <a href="{{ path ('create_book') }}" class="btn btn-dark">Add</a>
+        <br>
+        <br>
     <div class="card shadow mb-4">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Name</th>
                     <th>ISBN</th>
                     <th>Author</th>
                     <th>Description</th>
@@ -26,6 +40,7 @@
             {% for book in books %}
                <tr>
                     <td>{{ book.id }}</td>
+                    <td>{{ book.name }}</td>
                     <td>{{ book.isbn }}</td>
                     <td>{{ book.author }}</td>
                     <td>{{ book.description }}</td>

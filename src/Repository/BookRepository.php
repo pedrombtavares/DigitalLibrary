@@ -36,13 +36,13 @@ class BookRepository extends ServiceEntityRepository
     }
     */
 
-    public function findOneByName($value): ?Book
+    public function findOneByName($value): array
     {
         return $this->createQueryBuilder('b')
-            ->andWhere('b.name = :name')
-            ->setParameter('name', $value)
+            ->andWhere('b.name LIKE :name')
+            ->setParameter('name',  '%'.$value.'%')
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
 

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Book;
+use App\Form\BookSearchType;
 use App\Form\BookType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\Repository\BookRepository;
@@ -44,7 +45,7 @@ class LibraryController extends AbstractController
     }
 
     /**
-     * @Route("/book", methods={"POST", "GET"}, name="create_book")
+     * @Route("/book/add", methods={"POST", "GET"}, name="create_book")
      * @Template()
      */
     public function createBook(Request $request)
@@ -68,13 +69,28 @@ class LibraryController extends AbstractController
     }
 
     /**
-     * @Route("/books", methods={"GET"}, name="list_books")
+     * @Route("/books", methods={"GET", "POST"}, name="list_books")
      */
-    public function listAllBooks()
+    public function listAllBooks(Request $request)
     {
+        $book = new Book();
+
+        $books = $this->bookRepository->findAll();
+
+        $form = $this->createForm(BookSearchType::class, $book, [
+            'action' => $this->generateUrl('list_books'),
+            'method' => 'POST'
+        ]);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                $books = $this->bookRepository->findOneByName($form->getData()->getName());
+            }
 
         return $this->render('library/list_books.html.twig', [
-            'books' =>  $this->bookRepository->findAll()
+            'form' => $form->createView(),
+            'books' => $books 
         ]);
     }
 }

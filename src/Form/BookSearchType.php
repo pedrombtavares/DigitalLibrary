@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Book;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 
-class BookType extends AbstractType {
+class BookSearchType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -21,7 +21,7 @@ class BookType extends AbstractType {
                     'aria-describedby' => 'basic-addon1'
                 ], 'label' => 'Name'
             ])
-            ->add('save', SubmitType::class, [
+            ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-primary'
                 ], 'label' => 'Search'

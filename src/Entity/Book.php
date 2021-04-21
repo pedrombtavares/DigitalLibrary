@@ -3,17 +3,10 @@
 namespace App\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
-use App\Repository\BookRepository;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
- * @UniqueEntity(
- *     fields={"isbn"},
- *     message="This isbn is already in use on that host."
- * )
  */
 class Book
 {
