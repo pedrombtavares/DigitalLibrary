@@ -64,9 +64,8 @@ class BookRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
     }
 
-    public function delete(Book $book, $id): void
+    public function delete(Book $book): void
     {
-        $this->getEntityManager()->getRepository(Book::class)->find($id);
         $this->getEntityManager()->remove($book);
         $this->getEntityManager()->flush();
     }

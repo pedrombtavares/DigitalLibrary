@@ -123,8 +123,15 @@ class LibraryController extends AbstractController
 
     }
 
-    public function deleteBook()
+    /**
+     * @Route("/book/delete/{id}", methods={"GET", "POST"}, name="delete_book")
+     */
+    public function deleteBook($id)
     {
+        $book = new Book();
+        $book = $this->bookRepository->find($id);
+        $this->bookRepository->delete($book);
 
+        return $this->redirectToRoute('list_books');
     }
 }

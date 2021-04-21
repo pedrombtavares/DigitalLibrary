@@ -5,7 +5,13 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid">
+    {{ parent() }}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8">
+            <div class="container-fluid">
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -34,6 +40,7 @@
                     <th>Description</th>
                     <th>Cost</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tfoot>
@@ -45,9 +52,25 @@
                     <td>{{ book.description }}</td>
                     <td>{{ book.cost }}</td>
                     <td><a href="book/edit/{{ book.id }}" class="btn btn-dark">Edit</a></td>
+                    <td><a href="book/delete/{{ book.id }}" class="btn btn-danger">Delete</a></td>
                 </tr>
             {% endfor %}
         </table>
     </div>
 </div> 
+    </div>
+            <div class="col-2">
+            </div>
+        </div>
+    </div>
+<script>
+    $(document).ready(function() {
+        $(".btn-danger").click(function() {
+            if(!confirm("Are you sure?"))
+                {
+                    return false;
+                }
+            });
+    });
+</script>
 {% endblock %}
