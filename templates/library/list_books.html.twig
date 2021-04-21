@@ -28,23 +28,23 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>ISBN</th>
                     <th>Author</th>
                     <th>Description</th>
                     <th>Cost</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tfoot>
             {% for book in books %}
                <tr>
-                    <td>{{ book.id }}</td>
                     <td>{{ book.name }}</td>
                     <td>{{ book.isbn }}</td>
                     <td>{{ book.author }}</td>
                     <td>{{ book.description }}</td>
                     <td>{{ book.cost }}</td>
+                    <td><a href="book/edit/{{ book.id }}" class="btn btn-dark">Edit</a></td>
                 </tr>
             {% endfor %}
         </table>

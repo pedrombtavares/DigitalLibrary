@@ -93,4 +93,38 @@ class LibraryController extends AbstractController
             'books' => $books 
         ]);
     }
+
+    /**
+     * @Route("/book/edit/{id}", methods={"GET", "POST"}, name="update_books")
+     */
+    public function updateBook(Request $request, $id)
+    {
+        $book = new Book();
+        
+        $book = $this->bookRepository->find($id);
+
+        $form = $this->createForm(BookType::class, $book, [
+            'action' => $this->generateUrl('update_books', ['id' => $id]),
+            'method' => 'POST'
+        ]);
+
+        if ($request->isMethod(Request::METHOD_POST)) {
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->bookRepository->update($book);
+
+                return $this->redirectToRoute('list_books');
+            }
+        }
+        return $this->render('library/update_books.html.twig', [
+            'form' => $form->createView(),
+            'books' => $book ]);
+
+    }
+
+    public function deleteBook()
+    {
+
+    }
 }
