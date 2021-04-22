@@ -1,0 +1,11 @@
+<h1>NEW BOOK</h1>
+
+<p>
+    Name: {{ book.name }}
+</p>
+<p>
+    <code>{{ book.description }}</code>
+</p>
+<p>
+    <a href="{{ path('update_books', {'id': book.id}) }}">Click here to edit</a>
+</p>
