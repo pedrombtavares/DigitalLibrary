@@ -21,6 +21,8 @@ class BookService
         $book->setAuthor(
             ucwords($book->getAuthor())
         );
+        $book->setIsbn(strtoupper($book->getIsbn()));
+        
         $this->bookRepo->add($book);
     }
 }
