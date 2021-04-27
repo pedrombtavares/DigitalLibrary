@@ -106,9 +106,6 @@
     "monolog/monolog": {
         "version": "2.2.0"
     },
-    "nikic/php-parser": {
-        "version": "v4.10.4"
-    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -172,9 +169,6 @@
     "symfony/asset": {
         "version": "v5.2.4"
     },
-    "symfony/browser-kit": {
-        "version": "v5.2.4"
-    },
     "symfony/cache": {
         "version": "v5.2.6"
     },
@@ -196,21 +190,6 @@
             "bin/console"
         ]
     },
-    "symfony/css-selector": {
-        "version": "v5.2.4"
-    },
-    "symfony/debug-bundle": {
-        "version": "4.1",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.1",
-            "ref": "f8863cbad2f2e58c4b65fa1eac892ab189971bea"
-        },
-        "files": [
-            "config/packages/dev/debug.yaml"
-        ]
-    },
     "symfony/debug-pack": {
         "version": "v1.0.9"
     },
@@ -222,9 +201,6 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v5.2.6"
-    },
-    "symfony/dom-crawler": {
-        "version": "v5.2.4"
     },
     "symfony/dotenv": {
         "version": "v5.2.4"
@@ -308,15 +284,6 @@
         "files": [
             "config/packages/mailer.yaml"
         ]
-    },
-    "symfony/maker-bundle": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
-        }
     },
     "symfony/mime": {
         "version": "v5.2.6"
